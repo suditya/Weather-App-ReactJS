@@ -1,7 +1,7 @@
-WeatherApp
+#WeatherApp
 WeatherApp is a simple web application that displays weather information for a given location. Users can input a location and retrieve the current temperature, humidity, and weather condition.
 
-Features
+#Features
 Input field to enter the location
 Fetches weather data from the WeatherAPI
 Displays the temperature, humidity, and weather condition for the location
@@ -14,7 +14,7 @@ country-emoji: Library for converting country names to country flag emoji
 Getting Started
 Clone the repository:
 
-bash
+#bash
 Copy code
 git clone https://github.com/your-username/WeatherApp.git
 Install the dependencies:
