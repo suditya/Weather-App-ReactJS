@@ -27,7 +27,6 @@
 }
 
 .weather-app-container:hover {
-  transform: scale3d(1.01, 1.01, 1.1);
   cursor: pointer;
   transition-delay: 0.05s;
   transition-duration: 500ms;
