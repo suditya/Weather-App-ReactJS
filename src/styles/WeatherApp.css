@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tektur&display=swap");
+* {
+  font-family: "Bad Script", cursive;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: beige;
+}
+.weather-app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  box-shadow: 20px 18px 20px 0px rgb(0 0 0 / 74%);
+  padding: 35px;
+  width: 47%;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-size: 40px;
+  background-color: white;
+  font-family: "Bad Script", cursive;
+}
+
+.weather-app-container:hover {
+  transform: scale3d(1.01, 1.01, 1.1);
+  cursor: pointer;
+  transition-delay: 0.05s;
+  transition-duration: 500ms;
+}
+
+form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: normal;
+}
+
+input[type="text"] {
+  padding: 11px 46px;
+  font-size: 30px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.789);
+  color: #fff;
+  border: none;
+  font-weight: 900;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: rgb(27 94 87);
+  color: rgb(255, 255, 255);
+}
+
+.weather-data-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.weather-data-container h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.weather-data-container p {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+}
+.value {
+  font-family: "Tektur", cursive;
+}
+@media screen and (min-width: 750px) and (max-width:1000px) {
+  input[type="text"] {
+    padding: 6px 10px;
+    font-size: 25px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    margin-bottom: 19px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .weather-app-container {
+  
+    padding: 15px 15px;
+    width: 94%;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background-color: white;
+    font-family: "Bad Script", cursive;
+  }
+  form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: normal;
+  }
+  
+  input[type="text"] {
+    padding: 6px 10px;
+    font-size: 25px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    margin-bottom: 19px;
+  }
+  
+  button {
+    font-size: 23px;
+  }
+  
+  .weather-data-container {
+    margin-top: 0;
+  }
+  
+  .weather-data-container h2 {
+    font-size: 30px;
+  }
+  
+  .weather-data-container p {
+    font-size: 26px;
+  }
+  
+  .weather-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
