@@ -25,7 +25,7 @@ const WeatherApp = () => {
       }
       else city = location;
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`
       );
 
       let obj = response.data.location;
