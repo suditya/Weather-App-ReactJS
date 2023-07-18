@@ -1,10 +1,8 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/WeatherApp.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 const WeatherApp = () => {
   const [location, setLocation] = useState('');
@@ -13,9 +11,8 @@ const WeatherApp = () => {
   const [fullLocation, setFullLocation] = useState('');
   const apiKey = "bbdb2e8468b64185adf70717231507";
   const [icon, setIcon] = useState('');
- 
 
-  const fetchDefaultWeather = async () => {
+  const fetchWeatherData = async () => {
     try {
       setLoading(true);
       let city = '';
@@ -27,26 +24,21 @@ const WeatherApp = () => {
       const response = await axios.get(
         `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`
       );
-
-      let obj = response.data.location;
-      console.log(obj)
-      let fullLocation = `${obj.name},${obj.region},${obj.country}`
-    
-     
+      
+      const data = response.data;
+      let fullLocation = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
       setFullLocation(fullLocation);
-      console.log(fullLocation, " full location", obj)
 
-      let iconUrl = response.data.current.condition.icon;
+      let iconUrl = data.current.condition.icon;
       setIcon(`http:${iconUrl}`);
 
-      const temperature = response.data.current.temp_c;
-      const humidity = response.data.current.humidity;
-      const condition = response.data.current.condition.text;
-      // await getFlagEmoji(obj.country);
+      const temperature = data.current.temp_c;
+      const humidity = data.current.humidity;
+      const condition = data.current.condition.text;
+      
       setWeatherData({ temperature, humidity, condition });
-    } catch (err) {
-
-      toast.error(`Error fetching weather data, please check the country name properly typed or maybe due to API `, {
+    } catch (error) {
+      toast.error(`Error fetching weather data`, {
         position: toast.POSITION.TOP_RIGHT
       });
     } finally {
@@ -54,16 +46,20 @@ const WeatherApp = () => {
     }
   };
 
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetchDefaultWeather()
+    if (location.trim() !== '') {
+      fetchWeatherData();
+    } else {
+      toast.error('Please enter a valid location.', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   };
-  useEffect(() => {
 
-    fetchDefaultWeather();
-  }, []); 
+  useEffect(() => {
+    fetchWeatherData();
+  }, []);
 
   return (
     <div className="container">
@@ -83,16 +79,22 @@ const WeatherApp = () => {
         </form>
         {weatherData && (
           <div className="weather-data-container">
-            <h2>{fullLocation} </h2>
-            <p>Temperature: <span className='value'>{weatherData.temperature}°C 🌡️</span> </p>
-            <p>Humidity: <span className='value'>{weatherData.humidity} &#128167;</span></p>
-            <p>Weather Condition: <span className=''> {weatherData.condition} </span><img
+            <h2>{fullLocation} <span><img
               src={icon}
               alt="Weather Icon"
               className="weather-icon"
               align="center"
-            /></p>
-           
+            /></span> </h2>
+            <p>Weather Condition: <span className=''> {weatherData.condition} </span>
+            <img
+              src={icon}
+              alt="Weather Icon"
+              className="weather-icon"
+              align="center"
+            />
+            </p>
+            <p>Temperature: <span className='value'>{weatherData.temperature}°C 🌡️</span> </p>
+            <p>Humidity: <span className='value'>{weatherData.humidity} &#128167;</span></p>
           </div>
         )}
 
