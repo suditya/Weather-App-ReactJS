@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/test.css';
+import '../styles/WeatherApp.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,12 +31,13 @@ const WeatherApp = () => {
 
       let iconUrl = data.current.condition.icon;
       setIcon(`http:${iconUrl}`);
-
+        console.log(response, " datga ")
       const temperature = data.current.temp_c;
       const humidity = data.current.humidity;
       const condition = data.current.condition.text;
+      const feelsLike = data.current.feelslike_c
 
-      setWeatherData({ temperature, humidity, condition });
+      setWeatherData({ temperature, humidity, condition , feelsLike });
     } catch (error) {
       toast.error(`Error fetching weather data`, {
         position: toast.POSITION.TOP_RIGHT
@@ -80,14 +81,15 @@ const WeatherApp = () => {
           <div className="weather-data-container">
             <div className="weather-icon-container">
               <img src={icon} alt="Weather Icon" className="weather-icon" />
-              <p className='weather-condition'>{weatherData.condition}</p>
+              <p className='weather-condition'>{weatherData.condition} ,</p>
             </div>
             <div className="weather-info-container">
               <p className=' temperature'><span className='value'> {weatherData.temperature}°C 🌡️</span></p>
               <p className=' location'>{fullLocation}</p>
               <div className='humdity-container'>
                 <p className=' humidity'>Humidity: <span className='value'>{weatherData.humidity} &#128167;</span>  </p>
-                <p className=' feels-like'>feels like: <span className='value'>{weatherData.temperature + 2}°C 🌡️</span>  </p>
+                <p className=' feels-like'>feels like: <span className='value'>{weatherData.feelsLike}°C 🌡️</span>  </p> 
+                {/* //this api is not giving the temperature feels like  */}
               </div>
 
             </div>
