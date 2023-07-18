@@ -75,7 +75,7 @@ button:hover {
   font-family: monospace;
 }
 .weather-data-container {
-  margin-top: 3px;
+  margin-top: 1px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -90,9 +90,9 @@ button:hover {
 }
 
 .weather-data-container p {
-  font-size: 28px;
-  font-weight: 700;
- 
+      font-size: 28px;
+    font-weight: 700;
+    margin: 5px;
 }
 
 .weather-icon {
@@ -105,15 +105,17 @@ button:hover {
 }
 .weather-icon-container {
   position: relative;
+  height: 67px;
+  padding: 1px;
+
 }
 
 img.weather-icon {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  top: 1x;
-  top: 2%;
-  left: 110%;
+    width: 150px;
+    height: 150px;
+    top: -3%;
+    left: 92%;
 }
 .humdity-container {
   display: flex;
@@ -180,5 +182,12 @@ img.weather-icon {
   .weather-icon {
     width: 80px;
     height: 80px;
+  }
+  img.weather-icon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 18%;
+    left: 92%;
   }
 }
